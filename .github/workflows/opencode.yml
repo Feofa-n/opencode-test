@@ -29,5 +29,5 @@ jobs:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          model: openrouter/qwen/qwen3.8-27b:free
+          model: openrouter/deepseek/deepseek-v4-flash-0731
           use_github_token: true
