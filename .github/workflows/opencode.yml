@@ -23,11 +23,18 @@ jobs:
           fetch-depth: 1
           persist-credentials: false
 
+      - name: Configure git auth
+        run: |
+          git config --global user.name "opencode[bot]"
+          git config --global user.email "opencode[bot]@users.noreply.github.com"
+          git config --global url."https://x-access-token:${GITHUB_TOKEN}@github.com/".insteadOf "https://github.com/"
+
       - name: Run OpenCode
         uses: anomalyco/opencode/github@latest
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_ACTOR: opencode[bot]
         with:
           model: openrouter/deepseek/deepseek-v4-flash-0731
           use_github_token: true
